@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>{% block title %}{% endblock %} - CRM HUMG</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendors/core/core.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/feather-font/css/iconfont.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendors/flag-icon-css/css/flag-icon.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/demo/style.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/images/favicon.png') }}"/>
+    {% block css %}{% endblock %}
+
+</head>
+<body>
+<div class="main-wrapper">
+        <!-- Left sidebar -->
+        {% include 'share/_sidebar.html' %}
+
+        <div class="page-wrapper">
+            {% include 'share/_navbar.html' %}
+
+            <div class="page-content">
+                {% block content %}{% endblock %}
+            </div>
+
+            {% include 'share/_footer.html' %}
+        </div>
+    </div>
+
+<!-- Almost scripts are placed at the end of body -->
+	<!-- core:js -->
+
+<script type="text/javascript" src="{{ url_for('static', filename='assets/vendors/core/core.js') }}"></script>
+	<!-- endinject -->
+  <!-- plugin js for this page -->
+<script type="text/javascript" src="{{ url_for('static', filename='assets/vendors/chartjs/Chart.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/vendors/jquery.flot/jquery.flot.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
+<!-- end plugin js for this page -->
+	<!-- inject:js -->
+<script type="text/javascript" src="{{ url_for('static', filename='assets/vendors/feather-icons/feather.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/template.js') }}"></script>
+<!-- endinject -->
+  <!-- custom js for this page -->
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/dashboard.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/datepicker.js') }}"></script>
+	<!-- end custom js for this page -->
+
+{% block js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,107 @@
+{% extends "layout/app.html" %}
+{% block title %}
+Permission management
+{% endblock %}
+{% block content %}
+<nav class="page-breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/permission">Permission</a></li>
+      <li class="breadcrumb-item active" aria-current="page">List</li>
+   </ol>
+</nav>
+<div class="d-flex flex-column flex-sm-row mb-4">
+   <h3 class="flex-grow-1 mb-0"><span>Permission Management</span></h3>
+   <a href="/permission/create" class="btn btn-primary">
+   <i data-feather="plus"></i>
+   Add New Permission
+   </a>
+</div>
+<div class="card">
+   <div class="card-body">
+      <div class="page-filters row d-flex">
+         <div class="filter-item col-12 col-sm-4 ml-auto form-group">
+            <div class="input-group form-group">
+               <input class="form-control" type="text" placeholder="Search" aria-label="Search"/>
+               <div class="input-group-addon input-group-append">
+                  <button class="btn btn-sm btn-primary"><i data-feather="search"></i></button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="table-responsive">
+         <table class="table table-striped dataTable " id="dataTable">
+            <thead>
+               <tr>
+                  <th class="sorting_asc" style="width: 100px">ID</th>
+                  <th class="sorting">Name</th>
+                  <th class="sorting">Description</th>
+                  <th style="width: 100px">Actions</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>1</td>
+                  <td>Create User</td>
+                  <td>create user page</td>
+                  <td>
+                     <a href="/permission/edit" class="text-success" title="Edit user">
+                     <i data-feather="edit" class="icon-lg"></i>
+                     </a>
+                     <a href="#" class="text-danger" title="Delete user"><i data-feather="trash-2"
+                        class="icon-lg"></i></a>
+                  </td>
+               </tr>
+               <tr>
+                  <td>2</td>
+                  <td>View List user</td>
+                  <td>User page</td>
+                  <td>
+                     <a href="/permission/edit" class="text-success" title="Edit user">
+                     <i data-feather="edit" class="icon-lg"></i>
+                     </a>
+                     <a href="#" class="text-danger" title="Delete user"><i data-feather="trash-2"
+                        class="icon-lg"></i></a>
+                  </td>
+               </tr>
+               <tr>
+                  <td>3</td>
+                  <td>edit user</td>
+                  <td>User page</td>
+                  <td>
+                     <a href="/permission/edit" class="text-success" title="Edit user">
+                     <i data-feather="edit" class="icon-lg"></i>
+                     </a>
+                     <a href="#" class="text-danger" title="Delete user"><i data-feather="trash-2"
+                        class="icon-lg"></i></a>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div class="d-flex flex-column flex-sm-row mt-4 d-print-none align-items-center justify-content-between">
+         <div class="flex-wrap form-group">
+            <select class="form-control form-control-sm custom-select custom-select-sm" style="width: 60px;">
+               <option value="10" selected="">10</option>
+               <option value="25">25</option>
+               <option value="50">50</option>
+               <option value="100">100</option>
+            </select>
+            <span class="ml-2">Showing 1 to 10 of 56</span>
+         </div>
+         <div class="col-12 col-md-auto d-flex justify-content-center mt-1">
+            <nav class="text-right">
+               <ul class="pagination pagination-sm">
+                  <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true">«</span></a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true">»</span></a>
+                  </li>
+               </ul>
+            </nav>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}

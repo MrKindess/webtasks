@@ -1,0 +1,68 @@
+{% extends "layout/auth.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="row w-100 mx-0 auth-page">
+       <div class="col-md-3 col-xl-3 mx-auto">
+          <div class="card">
+             <div class="auth-form-wrapper px-4 py-5">
+                <div class="text-center mb-4">
+                   <img src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="Logo" width="200"/>
+                </div>
+                <form class="forms-sample">
+                   <div class="form-group">
+                      <label for="username"
+                         class="font-size-small required">
+                      Email
+                      </label>
+                      <input type="text" class="form-control" id=""
+                         placeholder="Typing email...">
+                   </div>
+                   <div class="form-group">
+                      <label for="password"
+                         class="font-size-small required">
+                      Password
+                      </label>
+                      <input type="password" class="form-control" id="password"
+                         autocomplete="current-password" placeholder="Typing password...">
+                   </div>
+                   <div class="form-check form-check-flat form-check-primary">
+                      <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input">
+                      <i class="input-frame"></i>
+                      Remember me
+                      </label>
+                   </div>
+                   <div class="text-center mt-4">
+                      <button type="submit" id="buttonLoign"
+                         class="btn btn-primary font-weight-semi font-size-large btn-sign-in w-100">
+                      Login
+                      </button>
+                     {# <div class="row mt-4">
+                         <div class="col-6 text-right">
+                            <a href="" class="text-decoration-none">
+                            Create an account
+                            </a>
+                         </div>
+                         <div class="col-6 text-left"><a href="/login/forgot-password"
+                            class="text-decoration-none">
+                            Forgot password?
+                            </a>
+                         </div>
+                      </div>#}
+                   </div>
+                </form>
+             </div>
+          </div>
+       </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    document.getElementById("buttonLoign").onclick = function () {
+        location.href = "http://127.0.0.1:5000/";
+    };
+</script>
+{% endblock %}

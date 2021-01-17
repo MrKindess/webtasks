@@ -1,0 +1,53 @@
+{% extends "layout/app.html" %}
+
+{% block title %}
+    Create User
+{% endblock %}
+
+{% block content %}
+    <nav class="page-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/user">Users</a></li>
+            <li class="breadcrumb-item active" aria-current="page">create</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex flex-column d-flex">
+        <h3 class="flex-grow-1 mb-0"><span>Create User</span></h3>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form class="forms-sample">
+               <div class="form-group">
+                  <label for="" class="active">Name</label>
+                  <input type="text" class="form-control" id="" placeholder="Typing name...">
+               </div>
+                <div class="form-group">
+                  <label for="" class="active">Username</label>
+                  <input type="text" class="form-control" id="" placeholder="Typing username...">
+               </div>
+               <div class="form-group">
+                  <label for="">Email address</label>
+                  <input type="email" class="form-control" placeholder="Typing email...">
+               </div>
+               <div class="form-group">
+                  <label for="">Password</label>
+                  <input type="password" class="form-control" placeholder="Typing password...">
+               </div>
+               <div class="form-check form-check-flat form-check-primary">
+                   <label class="">Assign to Roles</label>
+                      <select class="form-control" id="">
+                          <option>--Select Role--</option>
+                          <option>Admin</option>
+                          <option>User</option>
+                          <option>--</option>
+                          <option>--</option>
+                      </select>
+               </div>
+               <button type="submit" class="btn btn-primary mr-2">Save</button>
+               <button class="btn btn-light">Cancel</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
