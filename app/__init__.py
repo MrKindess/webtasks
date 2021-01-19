@@ -18,15 +18,15 @@ def not_found(error):
     return render_template('404.html'), 404
 
 # Import a module / component using its blueprint handler variable (mod_auth)
-# from app.auth.controllers import auth
+from app.auth.controllers import auth
 from app.users.controllers import users
 from app.dashboard.controllers import dashboard
 #from app.permissions.controllers import permissions
 
 # Register blueprint(s)
-# app.register_blueprint(auth)
-app.register_blueprint(users)
+app.register_blueprint(auth)
 app.register_blueprint(dashboard)
+app.register_blueprint(users)
 #app.register_blueprint(permissions)
 
 # Build the database:

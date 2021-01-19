@@ -10,11 +10,7 @@ auth = Blueprint('auth', __name__, url_prefix='/')
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-
-    # If sign in form is submitted
     form = LoginForm(request.form)
-
-    # Verify the sign in form
     if form.validate_on_submit():
 
         user = User.query.filter_by(email=form.email.data).first()
