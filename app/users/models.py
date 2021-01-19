@@ -1,6 +1,6 @@
 from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
-# Define a base model for other database tables to inherit
 class Base(db.Model):
 
     __abstract__  = True
@@ -9,7 +9,6 @@ class Base(db.Model):
     updated_at = db.Column(db.DateTime,  default=db.func.current_timestamp(),
                                            onupdate=db.func.current_timestamp())
 
-# Define a User model
 class User(Base):
     __tablename__ = 'users'
     first_name = db.Column(db.String(20))
@@ -18,13 +17,12 @@ class User(Base):
     avatar = db.Column(db.String(50))
     phone = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(50),  nullable=False)
-    status   = db.Column(db.SmallInteger, nullable=False)
+    status   = db.Column(db.Boolean, default=True)
 
-    def __init__(self, first_name, last_name, email, avatar, phone, password, status):
+    def __init__(self, first_name, last_name, email, avatar, phone, password):
         self.first_name = first_name
         self.last_name  = last_name
         self.avatar     = avatar
         self.phone      = phone
         self.email      = email
         self.password   = password
-        self.status     = status

@@ -1,18 +1,12 @@
 from flask_wtf import FlaskForm as Form
 from wtforms.fields.core import StringField
-from wtforms.fields.simple import PasswordField
+from wtforms.fields.simple import PasswordField, SubmitField
 from wtforms.validators import Required, ValidationError, DataRequired, \
-    Email, EqualTo, Length
+    Email, EqualTo, Length, InputRequired
 
-class LoginForm(Form):
-    email = StringField(label=('Email'),
-                        validators=[DataRequired(),
-                                    Email(),
-                                    Length(max=120)])
-    password = PasswordField(label=('Password'),
-                             validators=[DataRequired(),
-                                         Length(min=8, message='Password should be at least %(min)d characters long')])
-    confirm_password = PasswordField(
-        label=('Confirm Password'),
-        validators=[DataRequired(message='*Required'),
-                    EqualTo('password', message='Both password fields must be equal!')])
+class UserForm(Form):
+    first_name = StringField('First name')
+    last_name = StringField('Last name')
+    email = StringField('Email', validators=[InputRequired(message="Email is required!"), Email()])
+    password = PasswordField('Password', validators=[InputRequired(message="Password is required!")])
+    submit = SubmitField('Save')

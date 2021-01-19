@@ -1,25 +1,15 @@
 # Import flask dependencies
 from flask import Blueprint, request, render_template, \
                   flash, g, session, redirect, url_for
-
-# Import password / encryption helper tools
 from werkzeug.security import generate_password_hash, check_password_hash
-
-# Import the database object from the main app module
 from app import db
+from app.auth.forms import LoginForm
+from app.users.models import User
 
-# Import module forms
-from app.mod_auth.forms import LoginForm
+auth = Blueprint('auth', __name__, url_prefix='/')
 
-# Import module models (i.e. User)
-from app.auth.models import User
-
-# Define the blueprint: 'auth', set its url prefix: app.url/auth
-auth = Blueprint('auth', __name__, url_prefix='/auth')
-
-# Set the route and accepted methods
-@auth.route('/signin/', methods=['GET', 'POST'])
-def signin():
+@auth.route('/login', methods=['GET', 'POST'])
+def login():
 
     # If sign in form is submitted
     form = LoginForm(request.form)
@@ -39,4 +29,4 @@ def signin():
 
         flash('Wrong email or password', 'error-message')
 
-    return render_template("auth/signin.html", form=form)
+    return render_template("auth/login.html", form=form)

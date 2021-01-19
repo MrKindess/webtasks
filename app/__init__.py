@@ -8,7 +8,7 @@ app = Flask(__name__)
 # cấu hình kết nối sql
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Goby@123@localhost/testflask'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Goby@123@localhost/webtask'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://['tài khoản mysql']:[mật khẩu mysql]@localhost/[ten-database]'
 db = SQLAlchemy(app)
 
