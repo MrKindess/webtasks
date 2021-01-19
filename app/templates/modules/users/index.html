@@ -11,7 +11,7 @@ User management
 </nav>
 <div class="d-flex flex-column flex-sm-row mb-4">
    <h3 class="flex-grow-1 mb-0"><span>User Management</span></h3>
-   <a href="/users/create" class="btn btn-primary">
+   <a href="{{ url_for('users.create') }}" class="btn btn-primary">
    <i data-feather="plus"></i>
    Add New User
    </a>
@@ -42,18 +42,21 @@ User management
                <tr>
                   <th class="sorting_asc" style="width: 100px">ID</th>
                   <th class="sorting">Full name</th>
+                  <th class="sorting">Avatar</th>
                   <th class="sorting">Email</th>
-                  <th class="sorting">Username</th>
+                  <th class="sorting">Phone</th>
                   <th class="sorting">Role</th>
                   <th style="width: 100px">Actions</th>
                </tr>
             </thead>
             <tbody>
+            {% for user in users %}
                <tr>
-                  <td>1</td>
-                  <td>Ha Le</td>
-                  <td>test@email.com.au</td>
-                  <td>test12</td>
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.first_name}} {{ user.last_name }}</td>
+                  <td>{{ user.avatar}}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.phone }}</td>
                   <td><span class="badge badge-pill badge-success">Admin</span></td>
                   <td>
                      <a href="/user/edit" class="text-success" title="Edit user">
@@ -69,66 +72,7 @@ User management
                         class="icon-lg"></i></a>
                   </td>
                </tr>
-               <tr>
-                  <td>2</td>
-                  <td>Ha Le</td>
-                  <td>test@email.com.au</td>
-                  <td>test12</td>
-                  <td><span class="badge badge-pill badge-success">Admin</span></td>
-                  <td>
-                     <a href="/user/edit" class="text-success" title="Edit user">
-                     <i data-feather="edit" class="icon-lg"></i>
-                     </a>
-                     <a href="#" class="text-warning" title="Deactivate user">
-                     <i data-feather="pause-circle" class="icon-lg"></i>
-                     </a>
-                     <a href="#" class="text-primary" title="View user activities">
-                     <i class="icon fas fa-list-alt fa-fw"></i>
-                     </a>
-                     <a href="#" class="text-danger" title="Delete user"><i data-feather="trash-2"
-                        class="icon-lg"></i></a>
-                  </td>
-               </tr>
-               <tr>
-                  <td>3</td>
-                  <td>Ha Le</td>
-                  <td>test@email.com.au</td>
-                  <td>test12</td>
-                  <td><span class="badge badge-pill badge-success">Admin</span></td>
-                  <td>
-                     <a href="/user/edit" class="text-success" title="Edit user">
-                     <i data-feather="edit" class="icon-lg"></i>
-                     </a>
-                     <a href="#" class="text-warning" title="Deactivate user">
-                     <i data-feather="pause-circle" class="icon-lg"></i>
-                     </a>
-                     <a href="#" class="text-primary" title="View user activities">
-                     <i class="icon fas fa-list-alt fa-fw"></i>
-                     </a>
-                     <a href="#" class="text-danger" title="Delete user"><i data-feather="trash-2"
-                        class="icon-lg"></i></a>
-                  </td>
-               </tr>
-               <tr>
-                  <td>4</td>
-                  <td>Ha Le</td>
-                  <td>test@email.com.au</td>
-                  <td>test12</td>
-                  <td><span class="badge badge-pill badge-success">Admin</span></td>
-                  <td>
-                     <a href="/user/edit" class="text-success" title="Edit user">
-                     <i data-feather="edit" class="icon-lg"></i>
-                     </a>
-                     <a href="#" class="text-warning" title="Deactivate user">
-                     <i data-feather="pause-circle" class="icon-lg"></i>
-                     </a>
-                     <a href="#" class="text-primary" title="View user activities">
-                     <i class="icon fas fa-list-alt fa-fw"></i>
-                     </a>
-                     <a href="#" class="text-danger" title="Delete user"><i data-feather="trash-2"
-                        class="icon-lg"></i></a>
-                  </td>
-               </tr>
+            {% endfor %}
             </tbody>
          </table>
       </div>

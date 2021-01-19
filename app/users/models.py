@@ -14,9 +14,9 @@ class User(Base):
     first_name = db.Column(db.String(20))
     last_name = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
-    avatar = db.Column(db.String(50))
-    phone = db.Column(db.String(20), nullable=False)
-    password = db.Column(db.String(50),  nullable=False)
+    avatar = db.Column(db.String(), nullable=True)
+    phone = db.Column(db.String(20), nullable=True)
+    password = db.Column(db.String(100),  nullable=False)
     status   = db.Column(db.Boolean, default=True)
 
     def __init__(self, first_name, last_name, email, avatar, phone, password):
