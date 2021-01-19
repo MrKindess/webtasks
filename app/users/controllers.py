@@ -18,7 +18,7 @@ from app.users.models import User
 users = Blueprint('users', __name__, url_prefix='/users')
 
 # Set the route and accepted methods
-@users.route('/', methods=['GET', 'POST'])
+@users.route('/', methods=['GET'])
 def index():
 	return render_template('modules/users/index.html')
 
