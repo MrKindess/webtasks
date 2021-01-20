@@ -1,3 +1,5 @@
+from flask_login.mixins import UserMixin
+
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -9,7 +11,7 @@ class Base(db.Model):
     updated_at = db.Column(db.DateTime,  default=db.func.current_timestamp(),
                                            onupdate=db.func.current_timestamp())
 
-class User(Base):
+class User(Base, UserMixin):
     __tablename__ = 'users'
     first_name = db.Column(db.String(20))
     last_name = db.Column(db.String(20), nullable=False)
@@ -22,7 +24,7 @@ class User(Base):
     def __init__(self, first_name, last_name, email, avatar, phone, password):
         self.first_name = first_name
         self.last_name  = last_name
+        self.email      = email
         self.avatar     = avatar
         self.phone      = phone
-        self.email      = email
         self.password   = password

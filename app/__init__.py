@@ -21,13 +21,15 @@ def not_found(error):
 from app.auth.controllers import auth
 from app.users.controllers import users
 from app.dashboard.controllers import dashboard
-#from app.permissions.controllers import permissions
+#from app.permission.controllers import permissions
+from app.roles.controllers import roles
 
 # Register blueprint(s)
 app.register_blueprint(auth)
 app.register_blueprint(dashboard)
 app.register_blueprint(users)
 #app.register_blueprint(permissions)
+app.register_blueprint(roles)
 
 # Build the database:
 # This will create the database file using SQLAlchemy

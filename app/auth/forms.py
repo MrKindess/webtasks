@@ -6,5 +6,5 @@ from wtforms.validators import Required, Email, EqualTo, DataRequired
 class LoginForm(Form):
 	email = StringField('Email', validators=[DataRequired(), Email()])
 	password = PasswordField('Password', validators=[DataRequired()])
-	remember_me = BooleanField('remember_me', default=False)
+	remember = BooleanField('remember_me', default=False)
 	submit = SubmitField('Login')
