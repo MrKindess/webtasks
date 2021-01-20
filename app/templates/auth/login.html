@@ -10,7 +10,8 @@
                 <div class="text-center mb-4">
                    <img src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="Logo" width="200"/>
                 </div>
-                <form class="forms-sample">
+                <form class="forms-sample" action="{{ url_for('auth.login') }}" method="POST">
+                   {{ form.csrf_token }}
                    <div class="form-group">
                       {{ form.email.label }}
                       {{ form.email(class="form-control", placeholder="Typing email...") }}
@@ -21,7 +22,7 @@
                    </div>
                    <div class="form-check form-check-flat form-check-primary">
                       <label class="form-check-label">
-                     {{form.remember_me(class="form-check-input")}}
+                     {{form.remember(class="form-check-input")}}
                       <i class="input-frame"></i>
                       Remember me
                       </label>

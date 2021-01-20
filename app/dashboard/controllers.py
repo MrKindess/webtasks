@@ -8,32 +8,6 @@ dashboard = Blueprint('dashboard', __name__, url_prefix='/')
 def index():
 	return render_template('modules/dashboard/index.html')
 
-# view page role manager
-@dashboard.route('/role')
-def role():
-    return render_template('modules/role/index.html')
-
-@dashboard.route('/role/create')
-def createRole():
-    return render_template('modules/role/create.html')
-
-@dashboard.route('/role/edit')
-def editRole():
-    return render_template('modules/role/edit.html')
-
-# view page permission manager
-@dashboard.route('/permission')
-def permisison():
-    return render_template('modules/permission/index.html')
-
-@dashboard.route('/permission/create')
-def createPermisison():
-    return render_template('modules/permission/create.html')
-
-@dashboard.route('/permission/edit')
-def editPermisison():
-    return render_template('modules/permission/edit.html')
-
 # view page job manager
 @dashboard.route('/job')
 def job():

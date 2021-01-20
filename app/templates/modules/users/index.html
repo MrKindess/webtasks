@@ -3,7 +3,7 @@
 User management
 {% endblock %}
 {% block content %}
-<nav class="page-breadcrumb">
+<nav class="page-breadcrumb" xmlns="http://www.w3.org/1999/html">
    <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/user">Users</a></li>
       <li class="breadcrumb-item active" aria-current="page">List</li>
@@ -28,12 +28,14 @@ User management
             </select>
          </div>
          <div class="filter-item col-12 col-sm-4 ml-auto form-group">
-            <div class="input-group form-group">
-               <input class="form-control" type="text" placeholder="Search" aria-label="Search"/>
-               <div class="input-group-addon input-group-append">
-                  <button class="btn btn-sm btn-primary"><i data-feather="search"></i></button>
+            <form action="{{ url_for('users.index') }}" method="get">
+               <div class="input-group form-group">
+                  <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="search" value=""/>
+                  <div class="input-group-addon input-group-append">
+                     <button class="btn btn-sm btn-primary" type="submit"><i data-feather="search"></i></button>
+                  </div>
                </div>
-            </div>
+            </form>
          </div>
       </div>
       <div class="table-responsive">
@@ -45,30 +47,46 @@ User management
                   <th class="sorting">Avatar</th>
                   <th class="sorting">Email</th>
                   <th class="sorting">Phone</th>
+                  <th class="sorting">Status</th>
                   <th class="sorting">Role</th>
+                  <th class="sorting">Created_at</th>
                   <th style="width: 100px">Actions</th>
                </tr>
             </thead>
             <tbody>
-            {% for user in users %}
+            {% for user in users.items %}
                <tr>
                   <td>{{ user.id }}</td>
                   <td>{{ user.first_name}} {{ user.last_name }}</td>
-                  <td>{{ user.avatar}}</td>
+                  <td>
+                     {% if user.avatar == '' %}
+                     <img src="{{  url_for('static', filename='images/avatars/default.jpg') }}" alt="" width="50px" height="50px">
+                     {% else %}
+                        <img src="{{ user.avatar }}" alt="" width="50px" height="50px">
+                     {% endif %}
+                  </td>
                   <td>{{ user.email }}</td>
                   <td>{{ user.phone }}</td>
-                  <td><span class="badge badge-pill badge-success">Admin</span></td>
                   <td>
-                     <a href="/user/edit" class="text-success" title="Edit user">
-                     <i data-feather="edit" class="icon-lg"></i>
-                     </a>
-                     <a href="#" class="text-warning" title="Deactivate user">
+                     {% if user.status == True %}
+                        <span class="badge badge-pill badge-success">Active</span>
+                     {% else %}
+                        <span class="badge badge-pill badge-danger">Deactivate</span>
+                     {% endif %}
+                  </td>
+                  <td><span class="badge badge-pill badge-success">Admin</span></td>
+                  <td>{{ user.created_at }}</td>
+                  <td>
+                     <!--<a href="#" class="text-warning" title="Deactivate user">
                      <i data-feather="pause-circle" class="icon-lg"></i>
+                     </a>-->
+                     <a href="{{ url_for('users.update', id=user.id) }}" class="text-success" title="Edit user">
+                        <i data-feather="edit" class="icon-lg"></i>
                      </a>
                      <a href="#" class="text-primary" title="View user activities">
                      <i class="icon fas fa-list-alt fa-fw"></i>
                      </a>
-                     <a href="#" class="text-danger" title="Delete user"><i data-feather="trash-2"
+                     <a href="{{ url_for('users.delete', id=user.id) }}" class="text-danger" title="Delete user"><i data-feather="trash-2"
                         class="icon-lg"></i></a>
                   </td>
                </tr>
@@ -88,7 +106,7 @@ User management
          </div>
          <div class="col-12 col-md-auto d-flex justify-content-center mt-1">
             <nav class="text-right">
-               <ul class="pagination pagination-sm">
+               <!--<ul class="pagination pagination-sm">
                   <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true">«</span></a>
                   </li>
                   <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -96,7 +114,18 @@ User management
                   <li class="page-item"><a class="page-link" href="#">3</a></li>
                   <li class="page-item"><a class="page-link" href="#"><span aria-hidden="true">»</span></a>
                   </li>
-               </ul>
+               </ul>-->
+              {% for page_num in users.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                  {% if page_num %}
+                    {% if users.page == page_num %}
+                      <a class="btn btn-info mb-4" href="{{ url_for('users.index', page=page_num) }}">{{ page_num }}</a>
+                    {% else %}
+                      <a class="btn btn-outline-info mb-4" href="{{ url_for('users.index', page=page_num) }}">{{ page_num }}</a>
+                    {% endif %}
+                  {% else %}
+                    ...
+                  {% endif %}
+                {% endfor %}
             </nav>
          </div>
       </div>

@@ -7,6 +7,15 @@ from wtforms.validators import Required, ValidationError, DataRequired, \
 class CreateUserForm(Form):
     first_name = StringField('First name')
     last_name = StringField('Last name')
-    email = StringField('Email', validators=[InputRequired(message="Email is required!"), Email()])
-    password = PasswordField('Password', validators=[InputRequired(message="Password is required!")])
+    email = StringField('Email', validators=[DataRequired(message="Email is required!"), Email()])
+    password = PasswordField('Password', validators=[DataRequired(message="Password is required!")])
+    phone = StringField('Phone')
+    submit = SubmitField('Save')
+
+class EditUserForm(Form):
+    first_name = StringField('First name')
+    last_name = StringField('Last name')
+    email = StringField('Email', validators=[DataRequired(message="Email is required!"), Email()])
+    password = PasswordField('Password')
+    phone = StringField('Phone')
     submit = SubmitField('Save')
